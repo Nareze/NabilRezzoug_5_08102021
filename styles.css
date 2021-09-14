@@ -1,9 +1,44 @@
-.title {
-  font-style: italic;
+body {
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #F2E8F0 !important;
+  list-style-type: none;
 }
 
-body {
-  background-color: rgba(128, 128, 128, 0.25);
+header i {
+  font-size: 30px;
+  margin-right: 10px;
+  color: #AF6BA5;
+  position: relative;
+  bottom: 4px;
+}
+
+footer i {
+  font-size: 15px;
+  color: #AF6BA5;
+  margin-right: 5px;
+}
+
+.title {
+  font-family: 'Rubik', cursive;
+  color: #AF6BA5;
+}
+
+.brand {
+  font-family: 'Roboto', cursive;
+  font-style: italic;
+  color: #AF6BA5;
+}
+
+.headerColor, .footerColor {
+  color: #000 !important;
+}
+
+header, footer {
+  background-color: #FFF;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -12,9 +47,6 @@ body {
   }
   .sign {
     margin-left: 25px;
-  }
-  body {
-    list-style-type: none;
   }
 }
 /*# sourceMappingURL=styles.css.map */

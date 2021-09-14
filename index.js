@@ -9,18 +9,23 @@ function showTeddies(){
           let list = document.createElement("LI");
           let image = document.createElement("img");
           image.setAttribute('src',value[i].imageUrl);
-          image.style.width = '70%';
-          image.style.padding = '25px';
+          image.style.width = '40%';
+          image.style.padding = '20px';
           image.style.borderRadius = '55px';
           list.appendChild(image);
           document.getElementById("teddies").appendChild(list);
           let name = document.createElement("name");
           name.innerHTML = value[i].name + ' :';
           name.style.marginRight = '10px';
+          name.style.paddingLeft = '10px';
+          name.style.borderLeft = '5px solid #AF6BA5';
+          name.style.color = 'black';
+          name.style.fontWeight = 'bold';
           list.appendChild(name);
           let price = document.createElement("price");
           price.innerHTML = (value[i].price)/100 + '€';
           price.style.fontWeight = "bold";
+          price.style.fontStyle = "italic";
           list.appendChild(price);
       }
     })
@@ -39,18 +44,23 @@ function showTeddies(){
               let list = document.createElement("LI");
               let image = document.createElement("img");
               image.setAttribute('src',value[i].imageUrl);
-              image.style.width = '70%';
-              image.style.padding = '25px';
+              image.style.width = '40%';
+              image.style.padding = '20px';
               image.style.borderRadius = '55px';
               list.appendChild(image);
               document.getElementById("camera").appendChild(list);
               let name = document.createElement("name");
               name.innerHTML = value[i].name + ' :';
               name.style.marginRight = '10px';
+              name.style.paddingLeft = '10px';
+              name.style.borderLeft = '5px solid #AF6BA5';
+              name.style.color = 'black';
+              name.style.fontWeight = 'bold';
               list.appendChild(name);
               let price = document.createElement("price");
               price.innerHTML = (value[i].price)/100 + '€';
               price.style.fontWeight = "bold";
+              price.style.fontStyle = "italic";
               list.appendChild(price);
           }
       })
@@ -69,18 +79,23 @@ function showTeddies(){
                 let list = document.createElement("LI");
                 let image = document.createElement("img");
                 image.setAttribute('src',value[i].imageUrl);
-                image.style.width = '50%';
-                image.style.padding = '25px';
+                image.style.width = '40%';
+                image.style.padding = '20px';
                 image.style.borderRadius = '55px';
                 list.appendChild(image);
                 document.getElementById("furniture").appendChild(list);
                 let name = document.createElement("name");
                 name.innerHTML = value[i].name + ' :';
                 name.style.marginRight = '10px';
+                name.style.paddingLeft = '10px';
+                name.style.borderLeft = '5px solid #AF6BA5';
+                name.style.color = 'black';
+                name.style.fontWeight = 'bold';
                 list.appendChild(name);
                 let price = document.createElement("price");
                 price.innerHTML = (value[i].price)/100 + '€';
                 price.style.fontWeight = "bold";
+                price.style.fontStyle = "italic";
                 list.appendChild(price);
             }
         })

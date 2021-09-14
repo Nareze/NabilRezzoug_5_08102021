@@ -1,9 +1,60 @@
-.title{
-    font-style: italic;
-}
+$backgroundColor: #F2E8F0;
+
+$titleColor:#AF6BA5;
+
+$textColor: #000;
+
+$fontText: 'Roboto';
+
+
 body{
-    background-color: rgba(128, 128, 128, 0.250);
+    font-family: 'Roboto', sans-serif !important;
+    background-color: $backgroundColor !important;
+    list-style-type: none;
 }
+
+header{
+    i{
+        font-size: 30px;
+        margin-right: 10px;
+        color: $titleColor;
+        position: relative;
+        bottom: 4px;
+    }
+}
+
+footer{
+    i{
+        font-size: 15px;
+        color: $titleColor;
+        margin-right: 5px;
+    }
+}
+
+.title{
+    font-family: 'Rubik', cursive;
+    color: $titleColor;
+}
+
+.brand{
+    font-family: 'Roboto', cursive;
+    font-style: italic;
+    color: $titleColor;
+}
+
+.headerColor, .footerColor{
+    color: $textColor !important;
+}
+
+header, footer{
+    background-color: #FFF;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+
 
 
 @media (min-width: 768px){
@@ -12,8 +63,5 @@ body{
 }
 .sign {
     margin-left: 25px;
-}
-body{
-    list-style-type: none;
 }
 }
