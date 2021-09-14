@@ -1,0 +1,19 @@
+.title{
+    font-style: italic;
+}
+body{
+    background-color: rgba(128, 128, 128, 0.250);
+}
+
+
+@media (min-width: 768px){
+.mr-md-auto, .mx-md-auto {
+    margin-right: auto!important;
+}
+.sign {
+    margin-left: 25px;
+}
+body{
+    list-style-type: none;
+}
+}
