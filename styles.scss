@@ -13,6 +13,7 @@ body{
     list-style-type: none;
 }
 
+
 header{
     i{
         font-size: 30px;
@@ -63,5 +64,15 @@ a:link{
 }
 .sign {
     margin-left: 25px;
+}
+.productPageCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+}
+@media (min-width:425px){
+.marginDesc{
 }
 }
