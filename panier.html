@@ -30,9 +30,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
-
-
-
   <body>
     <header>
       <div
@@ -47,105 +44,150 @@
           p-4
         "
       >
-      <h1 class="my-0 mr-md-auto brand">
-        <i class="fas fa-shopping-cart"></i><a href="index.html">Orinoco</a> 
-      </h1>
+        <h1 class="my-0 mr-md-auto brand">
+          <i class="fas fa-shopping-cart"></i><a href="index.html">Orinoco</a>
+        </h1>
         <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 headerColor" href="#viewProducts">Produits</a>
-          <a class="p-2 headerColor" href="/panier.html">Panier</a>
+          <a class="p-2 headerColor" href="/index.html">Produits</a>
           <a class="p-2 headerColor" href="#">Support</a>
         </nav>
         <a class="btn btn-outline-warning sign" href="#">Connexion</a>
       </div>
     </header>
 
+
     <div class="container">
       <div class="row text-center">
         <div class="col my-4">
-          <h2 class="title">
-            Bienvenue sur Orinoco voici la liste des produits en vente,
-            choisissez et personalisez votre teddy !
-          </h2>
+          <h3 class="title">
+Résumé de la commande
+          </h3>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-end">
+          <span class="title">Vider le panier :</span><a href="" onclick="deleteItems()"><i class="fas fa-trash-alt"></i></a> 
+        </div>
+      </div>
+    </div>
+    
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="text-center mt-4" id="products">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="finalPrice">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+    
+
 
     <div class="container">
-        <div class="row">
-
-    <form>
-        <div class="form-row">
-
-          <div class="form-group col-md-6 my-3">
-            <label for="inputName4">Nom</label>
-            <input type="name" class="form-control" id="inputName4" placeholder="Nom">
+      <div class="row">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6 my-3">
+              <label for="inputName4">Nom</label>
+              <input
+                type="name"
+                class="form-control"
+                id="inputName4"
+                placeholder="Nom"
+              />
+            </div>
+            <div class="form-group col-md-6 my-3">
+              <label for="inputPrenom4">Prenom</label>
+              <input
+                type="prenom"
+                class="form-control"
+                id="inputprenom4"
+                placeholder="Prenom"
+              />
+            </div>
+          </div>
+          <div class="form-group my-3">
+            <label for="inputAddress">Adresse</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="65 Avenue Gambetta"
+            />
+          </div>
+          <div class="form-group my-3">
+            <label for="inputAddress">Ville</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="Paris"
+            />
           </div>
           <div class="form-group col-md-6 my-3">
-            <label for="inputPrenom4">Prenom</label>
-            <input type="prenom" class="form-control" id="inputprenom4" placeholder="Prenom">
-          </div>
-
-        </div>
-        <div class="form-group my-3">
-          <label for="inputAddress">Adresse</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="65 Avenue ...">
-        </div>
-        <div class="form-group col-md-6 my-3">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail4"
+              placeholder="Email"
+            />
           </div>
-        <button type="submit" class="btn btn-primary my-2">Commander</button>
-      </form>
-    </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <footer class="text-center text-lg-start text-muted pt-1 mt-5">
-    <div class="footerColor container text-center text-md-start">
-      <div class="row mt-3">
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-shopping-cart iconFooter"></i>Orinoco
-          </h6>
-          <p>Vente d'oursons en peluche de qualité avec personalisations</p>
-        </div>
-
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Liens Utiles</h6>
-          <a href="#!" class="text-reset d-block">Panier</a>
-          <a href="#!" class="text-reset d-block">Livraison</a>
-          <a href="#!" class="text-reset d-block">CGU</a>
-        </div>
-
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home"></i> Paris, 75000, FRANCE</p>
-          <p>
-            <i class="fas fa-envelope"></i>
-            orinoco@example.com
-          </p>
-          <p><i class="fas fa-phone"></i> + 01 234 567 88</p>
-        </div>
+          <button type="submit" class="btn btn-primary my-2">Commander</button>
+        </form>
       </div>
     </div>
-  </footer>
-  <script src="panier.js"></script>
-</body>
+    
+    <footer class="text-center text-lg-start text-muted pt-1 mt-5">
+      <div class="footerColor container text-center text-md-start">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-shopping-cart iconFooter"></i>Orinoco
+            </h6>
+            <p>Vente d'oursons en peluche avec personalisations</p>
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Liens Utiles</h6>
+            <a href="#!" class="text-reset d-block">Panier</a>
+            <a href="#!" class="text-reset d-block">Livraison</a>
+            <a href="#!" class="text-reset d-block">CGU</a>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home"></i> Paris, 75000, FRANCE</p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              orinoco@example.com
+            </p>
+            <p><i class="fas fa-phone"></i> + 01 234 567 88</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="panier.js"></script>
+  </body>
 </html>

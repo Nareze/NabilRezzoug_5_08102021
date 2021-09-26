@@ -6,6 +6,31 @@ $textColor: #000;
 
 $fontText: 'Roboto';
 
+#products{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#productName{
+    display: inline;
+    font-weight: bold;
+}
+
+#productDesc{
+    margin-top: 10px;
+}
+
+.productElements{
+    margin-top: 20px;
+}
+
+#finalPrice{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.fa-trash-alt{
+    color: purple;
+}
 
 body{
     font-family: 'Roboto', sans-serif !important;
@@ -38,6 +63,7 @@ footer{
     }
 }
 
+
 .title{
     font-family: 'Rubik', cursive;
     color: $titleColor;
@@ -57,25 +83,13 @@ header, footer{
     background-color: #FFF;
 }
 
-
-.parentCardLogo{
-    position:relative;
-}
-
-.cardLogo{
-    position: absolute;
-    right: 25px;
-    bottom: 10px;
-    font-size: 22px;
+.inline{
+    display: inline;
 }
 
 #numberItemCard{
-    position: absolute;
-    right: 60px;
-    bottom: 8px;
-    font-size: 22px;
+    margin-right: 10px;
 }
-
 
 
 
@@ -88,4 +102,6 @@ header, footer{
 }
 }
 @media (min-width:425px){
+}
+@media (min-width:320px){
 }

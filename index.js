@@ -7,22 +7,22 @@ function showTeddies() {
       console.log(teddies);
       for (let teddy in teddies) {
         let list =
-          document.createElement(
-            "a"
-          ); /* On créee l'élement parent qui englobe l'image et la description */
+        document.createElement(
+          "a"
+        ); /* On créee l'élement parent qui englobe l'image et la description */
         list.setAttribute(
           "href",
           "produit.html?" + teddies[teddy]._id
         ); /* On ajoute l'id correspondant au produit dans le lien avec le point d'interrogation */
 
         /*Inscription des liens dans le footer */
-        let footerLink_1 = document.getElementById("test2");
+        let footerLink_1 = document.getElementById("product1");
         footerLink_1.innerHTML = teddies[2].name;
         footerLink_1.setAttribute("href", "produit.html?" + teddies[2]._id);
-        let footerLink_2 = document.getElementById("test3");
+        let footerLink_2 = document.getElementById("product2");
         footerLink_2.innerHTML = teddies[4].name;
         footerLink_2.setAttribute("href", "produit.html?" + teddies[4]._id);
-        let footerLink_3 = document.getElementById("test4");
+        let footerLink_3 = document.getElementById("product3");
         footerLink_3.innerHTML = teddies[3].name;
         footerLink_3.setAttribute("href", "produit.html?" + teddies[3]._id);
 

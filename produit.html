@@ -48,7 +48,7 @@
           <i class="fas fa-shopping-cart"></i><a href="index.html">Orinoco</a>
         </h1>
         <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 headerColor" href="#">Produits</a>
+          <a class="p-2 headerColor" href="index.html">Produits</a>
           <a class="p-2 headerColor" href="/panier.html">Panier</a>
           <a class="p-2 headerColor" href="#">Support</a>
         </nav>
@@ -58,36 +58,64 @@
 
     <div class="container">
       <div class="row text-center">
-        <div class="parentCardLogo col my-4">
-          <h2 class="title">
-            Vous pouvez personaliser votre teddy :
-            <span id="numberItemCard"></span>
-            <a href="/panier.html"><i class="cardLogo fas fa-shopping-cart"></i></a>
-          </h2>
+        <div class="col title my-3">
+          <h2 class="inline">Vous pouvez personaliser votre teddy :</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col title d-flex justify-content-end">
+          <span id="numberItemCard"></span>
+          <span id="icone"></span>
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="row text-center my-3">
-        <div class="col-lg-6" id="teddies"></div>
+        <div class="col-lg-6">
+          <div>
+            <img src="" alt="" id="productPic" />
+          </div>
+          <div class="productElements">
+            <p id="productName"></p>
+            <span id="productPrice"></span>
+            <p id="productDesc"></p>
+            <p id="productId"></p>
+          </div>
+        </div>
+
         <div class="my-2 col-lg-6">
           <select
             class="form-select"
             aria-label="Default select example"
             id="customColors"
           >
-            <option selected>Choisissez votre couleur</option>
+            <option selected>Choisir une couleur</option>
           </select>
+
+          <input
+            type="number"
+            placeholder="Ajouter une quantité"
+            min="0"
+            id="quantity"
+            class="text-center mt-4"
+          />
+
           <div class="container">
             <div class="row">
-              <div class="col-12 my-4">
-                <button type="button" class="btn btn-primary my-4 mx-5" id="addToCard">
-                  Ajouter au Panier
+              <div class="col-12">
+                <button
+                  type="button"
+                  class="btn btn-success mt-5"
+                  id="addToCard"
+                >
+                  Mettre dans le panier
                 </button>
-                <button type="button" class="btn btn-primary my-4 mx-5" id="deleteFromCard">
-                  Retirer du Panier
-                </button>
+
+                <div class="col-12 mt-4" id="buttons"></div>
               </div>
             </div>
           </div>
@@ -102,12 +130,11 @@
             <h6 class="text-uppercase fw-bold mb-4">
               <i class="fas fa-shopping-cart iconFooter"></i>Orinoco
             </h6>
-            <p>Vente d'oursons en peluche de qualité avec personalisations</p>
+            <p>Vente d'oursons en peluche avec personalisations</p>
           </div>
 
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 class="text-uppercase fw-bold mb-4">Liens Utiles</h6>
-            <a href="#!" class="text-reset d-block">Panier</a>
             <a href="#!" class="text-reset d-block">Livraison</a>
             <a href="#!" class="text-reset d-block">CGU</a>
           </div>
