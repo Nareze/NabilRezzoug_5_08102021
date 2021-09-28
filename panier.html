@@ -68,7 +68,7 @@ Résumé de la commande
     <div class="container">
       <div class="row">
         <div class="col d-flex justify-content-end">
-          <span class="title">Vider le panier :</span><a href="" onclick="deleteItems()"><i class="fas fa-trash-alt"></i></a> 
+          <span class="title">Vider le panier</span><a href="" onclick="deleteItems()"><i class="fas fa-trash-alt"></i></a> 
         </div>
       </div>
     </div>
@@ -96,6 +96,15 @@ Résumé de la commande
 </div>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="confirm">
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -106,23 +115,24 @@ Résumé de la commande
 
     <div class="container">
       <div class="row">
-        <form>
+        <form id="form">
           <div class="form-row">
             <div class="form-group col-md-6 my-3">
-              <label for="inputName4">Nom</label>
+              <label for="inputName">Nom</label>
               <input
                 type="name"
                 class="form-control"
-                id="inputName4"
+                id="inputName"
                 placeholder="Nom"
+                id="submit-btn"
               />
             </div>
             <div class="form-group col-md-6 my-3">
-              <label for="inputPrenom4">Prenom</label>
+              <label for="inputPrenom">Prenom</label>
               <input
                 type="prenom"
                 class="form-control"
-                id="inputprenom4"
+                id="inputPrenom"
                 placeholder="Prenom"
               />
             </div>
@@ -141,7 +151,7 @@ Résumé de la commande
             <input
               type="text"
               class="form-control"
-              id="inputAddress"
+              id="inputCity"
               placeholder="Paris"
             />
           </div>
@@ -150,15 +160,31 @@ Résumé de la commande
             <input
               type="email"
               class="form-control"
-              id="inputEmail4"
+              id="inputEmail"
               placeholder="Email"
             />
           </div>
-          <button type="submit" class="btn btn-primary my-2">Commander</button>
+          <a class="btn btn-primary" href="" role="button" id="buttonForm">Commander</a>
+
+          <p id="result"></p>
+
         </form>
       </div>
     </div>
+
+
+
+
+
+
     
+
+
+
+
+
+
+
     <footer class="text-center text-lg-start text-muted pt-1 mt-5">
       <div class="footerColor container text-center text-md-start">
         <div class="row mt-3">
