@@ -67,11 +67,6 @@ showTeddies();
 
 
 
-
-
-
-
-
 /* declarer les données à ajouter au localstorage */
 const addToCard = document.getElementById("addToCard");
 const quantity = document.getElementById("quantity");
@@ -108,27 +103,44 @@ function addDataToCart(){
         items = [];
         items.push(objet);
         localStorage.setItem("data", JSON.stringify(items));
-        window.location.href = "panier.html";
+        // window.location.href = "panier.html";
 
-        /* si le localstorage n'est pas vide rajouter un nouvel objet */
+      /* si le localstorage n'est pas vide rajouter un nouvel objet */
+
       } else {
+      //  let flagId = false;
+      //  for (let item of items){
+      //  console.log(item.id)
+      //  if ((item.id) == (objet.id)) {    /* objet est le nouveau ajout panier */
+      //  item.quantity = parseInt(item.quantity) + parseInt(objet.quantity);
+      //  console.log(objet.quantity);
+      //  console.log(item.quantity);
+      //  flagId = true; 
+      //  break;      /* permet de sortir de la boucle */
+      //    }
+      //  }
+      //    if (flagId == false)  {
+      //      items.push(objet);
+      //    }
 
-        let flagId = false;
-        for (let item of items){
-          console.log(item.id)
-          if ((item.id) == (objet.id)) {
-            item.quantity = parseInt(item.quantity) + parseInt(objet.quantity);
-            console.log(objet.quantity);
-            console.log(item.quantity);
-            flagId = true; 
-            break;
-          }
-        }
-        if (flagId == false) {
-          items.push(objet);
-        }
-        localStorage.setItem("data", JSON.stringify(items));
-        window.location.href = "panier.html";
+      let array1 = JSON.parse(localStorage.getItem("data"));
+      console.log(array1);
+      mapArray1 = array1.map(x => x.id == objet.id);    /* checking des ids dans le localstorage de chaque indice dans le tableau et renvoie un tableau true ou false  */
+
+      let position = mapArray1.indexOf(true);
+      console.log("position : " + position);
+      if (position != -1){
+        console.log("if: " + mapArray1);
+        array1[position].quantity = parseInt(array1[position].quantity) + parseInt(objet.quantity);
+        console.log(objet.quantity);
+        console.log(array1[0].quantity);
+      }
+      else {
+        array1.push(objet);
+      }
+      
+      localStorage.setItem("data", JSON.stringify(array1));
+      //window.location.href = "panier.html";
       }
     }
   })
@@ -139,3 +151,44 @@ addDataToCart();
 
 
 
+
+
+
+/*
+// map 1
+map1 = array1.map(function(e) {return e.id;});
+console.log(map1);
+var pos = array1.map(function(e) {return e.id;}).indexOf(objet.id);
+console.log("pos: "+pos);
+
+//map 2
+mapArray1 = array1.map(x => x.id == objet.id);
+console.log(mapArray1);
+console.log("id nouvel ajout panier: "+objet.id);
+indexArray = mapArray1.indexOf(true);
+console.log("indexArray: "+indexArray);
+
+if (pos != -1) {
+  console.log("quantity before = "+array1[pos].quantity);
+  array1[pos].quantity = parseInt(array1[pos].quantity) + parseInt(objet.quantity);
+  console.log("quantity after = "+array1[pos].quantity);
+} else {
+  console.log("else: OK");
+  array1.push(objet);
+}
+console.log("Local storage: "+array1);
+*/
+/*
+let indexArray = array1.findIndex(x => x.id == objet.id);
+console.log(objet.id);
+console.log(indexArray);
+
+if (indexArray != -1) {
+  array1[indexArray].quantity = parseInt(array1[indexArray].quantity) + parseInt(objet.quantity);
+} else {
+  array1.push(objet);
+}
+console.log(array1);
+*/
+
+//console.log(map1);

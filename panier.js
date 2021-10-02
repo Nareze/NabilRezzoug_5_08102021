@@ -1,5 +1,33 @@
 let data = JSON.parse(localStorage.getItem("data"));
-console.log(data);
+
+
+/*
+for (let itemsToDel in data){
+
+    let indexToRemove = Object.values(data);
+    console.log(indexToRemove);
+
+    data.slice(indexToRemove, 1);
+    console.log(data);
+
+    localStorage.setItem('data', JSON.stringify(data));
+
+}
+*/
+
+/*
+function deleteItems(){
+  
+    console.log(data);
+    let indexToRemove = Object.values(data[0]);
+    data.slice(indexToRemove, 1);
+    console.log(data);
+    localStorage.setItem('data', JSON.stringify(data));
+  
+
+}
+*/
+
 
 function getPrice() {
   array = [];
@@ -38,6 +66,16 @@ function getPrice() {
     elem3.style.color = "brown";
     product.appendChild(elem3);
 
+    /*
+    let elem1 = document.createElement("a");
+    elem1.style.display = "block";
+    elem1.innerHTML = "Supprimer le produit";
+    elem1.setAttribute("href","");
+    elem1.setAttribute('onclick','deleteItems()');
+    product.appendChild(elem1);
+    */
+
+
     document.getElementById("products").appendChild(product);
   }
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
@@ -52,9 +90,7 @@ function getPrice() {
 }
 getPrice();
 
-function deleteItems() {
-  localStorage.clear();
-}
+
 
 
 
@@ -118,5 +154,64 @@ function send(e) {
 
 const buttonForm = document.getElementById("buttonForm");
 buttonForm.addEventListener("click", send);
+
+
+
+
+
+document.getElementById("buttonForm").disabled = true;
+
+function checkValidity(){
+  let emptyRegex = /^$/;
+  let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if ((!emptyRegex.test(document.getElementById("inputName").value)) &&
+     (!emptyRegex.test(document.getElementById("inputPrenom").value)) &&
+     (!emptyRegex.test(document.getElementById("inputAddress").value)) &&
+     (!emptyRegex.test(document.getElementById("inputCity").value)) &&
+     (emailRegex.test(document.getElementById("inputEmail").value))
+     ) {
+    document.getElementById("buttonForm").disabled = false;
+    document.getElementById("message").innerHTML = "";
+  }
+  else {
+    document.getElementById("buttonForm").disabled = true;
+    document.getElementById("message").innerHTML = "Merci de remplir tous les champs";
+  }
+}
+
+
+document.getElementById("inputName").addEventListener("input", function(e){checkValidity()});
+document.getElementById("inputPrenom").addEventListener("input", function(e){checkValidity()}); 
+document.getElementById("inputAddress").addEventListener("input", function(e){checkValidity()}); 
+document.getElementById("inputCity").addEventListener("input", function(e){checkValidity()});
+document.getElementById("inputEmail").addEventListener("input", function(e){checkValidity()});
+
+
+
+
+
+
+/*document.querySelectorAll("input").forEach(item => {addEventListener("input", function(e){checkValidity()});})*/
+/*document.querySelectorAll("input").forEach(item => {addEventListener("input", function(e){checkMail()});})*/
+
+/*function checkMail(){
+  let emptyRegex = /^$/;
+  let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if 
+
+     ((emailRegex.test(document.getElementById("inputEmail").value))
+     ) {
+    document.getElementById("buttonForm").disabled = false;
+  }
+  else {
+    document.getElementById("buttonForm").disabled = true;
+  }
+}*/
+
+/*
+tabElement = [document.getElementById("inputName"), document.getElementById("inputPrenom"), 
+              document.getElementById("inputAddress"), document.getElementById("inputCity"), 
+              document.getElementById("inputEmail")];
+*/
 
 

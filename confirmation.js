@@ -14,7 +14,6 @@ function getCommandSummary() {
 
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
   let finalPrice = array.reduce(reducer);
-  console.log(typeof(finalPrice));
   console.log(finalPrice);
   let command = localStorage.getItem("responseId");
   console.log(command);

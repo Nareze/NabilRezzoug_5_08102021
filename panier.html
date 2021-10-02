@@ -68,7 +68,7 @@ Résumé de la commande
     <div class="container">
       <div class="row">
         <div class="col d-flex justify-content-end">
-          <span class="title">Vider le panier</span><a href="" onclick="deleteItems()"><i class="fas fa-trash-alt"></i></a> 
+          <span class="title">Vider le panier</span><a href="" onclick="deleteItems()"><i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
     </div>
@@ -108,32 +108,28 @@ Résumé de la commande
 
 
 
-
-
-    
-
-
     <div class="container">
       <div class="row">
-        <form id="form">
+        <form id="form" >
           <div class="form-row">
             <div class="form-group col-md-6 my-3">
               <label for="inputName">Nom</label>
               <input
                 type="name"
-                class="form-control"
+                class="form-control test"
                 id="inputName"
-                placeholder="Nom"
-                id="submit-btn"
+                placeholder="Entrer votre Nom"
+                maxlength="50"
               />
             </div>
             <div class="form-group col-md-6 my-3">
               <label for="inputPrenom">Prenom</label>
               <input
                 type="prenom"
-                class="form-control"
+                class="form-control test"
                 id="inputPrenom"
-                placeholder="Prenom"
+                placeholder="Entrer votre Prenom"
+                maxlength="50"
               />
             </div>
           </div>
@@ -141,38 +137,41 @@ Résumé de la commande
             <label for="inputAddress">Adresse</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control test"
               id="inputAddress"
-              placeholder="65 Avenue Gambetta"
+              placeholder="Inscrire votre Adresse"
+              maxlength="50"
             />
           </div>
           <div class="form-group my-3">
-            <label for="inputAddress">Ville</label>
+            <label for="inputCity">Ville</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control test"
               id="inputCity"
-              placeholder="Paris"
+              placeholder="Entrer votre ville"
+              maxlength="50"
             />
           </div>
           <div class="form-group col-md-6 my-3">
-            <label for="inputEmail4">Email</label>
+            <label for="inputEmail">Email</label>
             <input
               type="email"
-              class="form-control"
+              class="form-control test"
               id="inputEmail"
-              placeholder="Email"
+              placeholder="Ajouter votre Email"
+              maxlength="25"
             />
           </div>
-          <a class="btn btn-primary" href="" role="button" id="buttonForm">Commander</a>
+          <button class="btn btn-primary mb-4" href="" role="button" id="buttonForm">Commander</button>
 
+          <p id="message"></p>
           <p id="result"></p>
+
 
         </form>
       </div>
     </div>
-
-
 
 
 
