@@ -1,98 +1,105 @@
+///////////////////////////////* AFFICHAGE DES ELEMENTS DEPUIS LE LOCALSTORAGE, CALCUL DU PRIX... *///////////////////////////////
+
 let data = JSON.parse(localStorage.getItem("data"));
 
-
-/*
-for (let itemsToDel in data){
-
-    let indexToRemove = Object.values(data);
-    console.log(indexToRemove);
-
-    data.slice(indexToRemove, 1);
-    console.log(data);
-
-    localStorage.setItem('data', JSON.stringify(data));
-
-}
-*/
-
-/*
-function deleteItems(){
-  
-    console.log(data);
-    let indexToRemove = Object.values(data[0]);
-    data.slice(indexToRemove, 1);
-    console.log(data);
-    localStorage.setItem('data', JSON.stringify(data));
-  
-
-}
-*/
-
-
 function getPrice() {
-  array = [];
+  priceOfElements = []; /* contient le prix de tous les produits */
 
   for (let teddies in data) {
+    let elem0 = document.createElement("div");
+    elem0.style.backgroundColor = "pink";
+    elem0.style.margin = "10px";
+    elem0.style.borderRadius = "25px";
+    elem0.style.paddingBottom = "10px";
+    let elem1 = document.createElement("img");
+    elem1.setAttribute("src", data[teddies].photo);
+    elem1.style.borderRadius = "25px";
+    elem1.style.paddingBottom = "20px";
+    elem1.setAttribute("width", "304");
+    elem1.setAttribute("height", "228");
+    elem1.style.padding = "10px";
+    elem0.appendChild(
+      elem1
+    ); /* création d'une div et d'une image pour y ajouter la description et l'image des produits du panier */
+
     let price = data[teddies].price;
     console.log(price);
     let quantities = data[teddies].quantity;
-    let totalPrice = parseInt(price) * parseInt(quantities);
-    array.push(totalPrice);
+    console.log(quantities);
+    let totalPrice =
+      parseInt(price) *
+      parseInt(
+        quantities
+      ); /* on récupère dans le localstorage le prix et la quantité de chaque élements puis on les multiplie */
 
-    let product = document.createElement("div");
-    product.style.backgroundColor = "pink";
-    product.style.margin = "10px";
-    product.style.borderRadius = "25px";
-
-    let elem0 = document.createElement("img");
-    elem0.setAttribute("src", data[teddies].photo);
-    elem0.style.borderRadius = "25px";
-    elem0.style.paddingBottom = "20px";
-    elem0.setAttribute("width", "304");
-    elem0.setAttribute("height", "228");
-    elem0.style.padding = "10px";
-    product.appendChild(elem0);
+    console.log(totalPrice);
+    priceOfElements.push(
+      totalPrice
+    ); /* on ajoute dans un array les differents prix multipliés pour faire un total */
 
     let name = data[teddies].name;
-
     let elem2 = document.createElement("p");
-    elem2.innerHTML = quantities + " " + name;
+    elem2.innerHTML = name;
     elem2.style.color = "brown";
-    product.appendChild(elem2);
-
+    elem0.appendChild(elem2);
+    elem2bis = document.createElement("p");
+    elem2bis.innerHTML = "Quantité : " + quantities;
+    elem2bis.style.color = "brown";
+    elem0.appendChild(elem2bis);
     let elem3 = document.createElement("p");
-    elem3.innerHTML = "Prix total : " + array[teddies] + " €";
+    elem3.innerHTML = "Prix total : " + totalPrice + " €";
     elem3.style.marginBottom = "25px";
     elem3.style.color = "brown";
-    product.appendChild(elem3);
+    elem0.appendChild(elem3); /* on affiche le prix total d'un produit */
 
-    /*
-    let elem1 = document.createElement("a");
-    elem1.style.display = "block";
-    elem1.innerHTML = "Supprimer le produit";
-    elem1.setAttribute("href","");
-    elem1.setAttribute('onclick','deleteItems()');
-    product.appendChild(elem1);
-    */
+    let elem4 = document.createElement("a");
+    elem4.setAttribute("href", "#");
+    elem4.innerHTML = "Supprimer le produit";
+    elem0.appendChild(elem4); /* ajout d'un bouton supprimer */
 
+    elem4.addEventListener("click", function (event) {
+      let nameBasket = elem2.innerHTML; /* On récupère le nom de l'article */
+      let array1 = JSON.parse(localStorage.getItem("data"));
+      mapArray1 = array1.map(
+        (x) => x.name == nameBasket
+      ); /* On compare le nom de l'article aux noms des articles du localstorage */
+      let position = mapArray1.indexOf(true);
+      console.log(
+        position
+      ); /* Renvoie la position d'un même article trouvé dans le localstorage */
 
-    document.getElementById("products").appendChild(product);
+      if (position != -1) {
+        data.splice(position, 1); /* Suppression de l'article trouvé */
+        localStorage.setItem("data", JSON.stringify(data));
+        location.reload();
+        alert("Cet article a bien été supprimé !");
+      }
+    });
+
+    document.getElementById("products").appendChild(elem0);
+    const reducer = (previousValue, currentValue) =>
+      previousValue +
+      currentValue; /* aditionne les valeurs du tableau pour ajouter le prix final */
+
+    let finalPrice = document.getElementById("finalPrice");
+    finalPrice.innerHTML =
+      "Le prix total des articles est de " +
+      priceOfElements.reduce(reducer) +
+      "€"; /* on applique la méthode reduce */
+    finalPrice.style.fontSize = "20px";
+    finalPrice.style.color = "brown";
+    finalPrice.style.fontWeight = "bold";
+    console.log(priceOfElements.reduce(reducer));
   }
-  const reducer = (previousValue, currentValue) => previousValue + currentValue;
-
-  let totalPrice = document.getElementById("finalPrice");
-  totalPrice.innerHTML =
-    "Le prix total des articles est de " + array.reduce(reducer) + "€";
-  totalPrice.style.fontSize = "20px";
-  totalPrice.style.color = "brown";
-  totalPrice.style.fontWeight = "bold";
-  console.log(array.reduce(reducer));
 }
+
 getPrice();
 
+function deleteItems(){
+  localStorage.clear();
+}
 
-
-
+/////////////////////////////////////////* ENVOIE DU FORMULAIRE ET REPONSE DU SERVER (ID DE COMMANDE) *//////////////////////////////
 
 const url = "http://localhost:3000/api/teddies/order";
 
@@ -112,37 +119,41 @@ function send(e) {
       this.email = email;
     }
   }
-  let contact = new objetForm(firstName.value,lastName.value,address.value,city.value,email.value);
+  let contact = new objetForm(
+    firstName.value,
+    lastName.value,
+    address.value,
+    city.value,
+    email.value
+  ); /* on crée un objet avec tout les éléments du formulaire (à envoyer) */
+
   let products = [];
-
-
   let dataStorage = localStorage.getItem("data");
   console.log(JSON.parse(dataStorage));
-  for (let ids in data){
+  for (let ids in data) {
     let id = data[ids].id;
-    console.log("id: "+id);
+    console.log("id: " + id);
     products.push(id);
-  }
-  console.log("products[]: "+products);
-
+  } /* on ajoute tout les id des produits dans un array (à envoyer) */
+  console.log("products[]: " + products);
 
   let bodyData = { contact, products };
-  //console.log("bodyData: " + bodyData.contact.lastName);
   var request = new Request(url, {
     method: "POST",
     body: JSON.stringify(bodyData),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  });
+  }); /* dans le body on ajoute les elements a envoyer (contact,product) avec la méthode POST */
   fetch(request)
     .then(async function (res) {
       if (res.ok) {
         const pkgOrder = await res.json();
-        //console.log("reponse order : "+pkgOrder);
         console.log(`Resultat de res.ok : ${res.ok}`);
-        //console.log(pkgOrder.contact);
-        localStorage.setItem("responseId", pkgOrder.orderId);
-        //console.log(`réponse server : ${res.status}`);
-        window.location = "confirmation.html"
+        console.log(pkgOrder.orderId);
+        localStorage.setItem(
+          "responseId",
+          pkgOrder.orderId
+        ); /* on ajoute la réponse du server (num de commande) dans le localstorage */
+        window.location = "confirmation.html";
       } else {
         console.log(`réponse server : ${res.status}`);
       }
@@ -152,66 +163,54 @@ function send(e) {
     });
 }
 
+//////////////////////////* VALIDATION DU FORMULAIRE *////////////////////////////////////
+
 const buttonForm = document.getElementById("buttonForm");
-buttonForm.addEventListener("click", send);
+buttonForm.addEventListener(
+  "click",
+  send
+); /* appelle la fonction send au click */
 
+document.getElementById(
+  "buttonForm"
+).disabled = true; /* par défaut le bouton doit être grisé jusqu'au remplissage du formulaire */
 
-
-
-
-document.getElementById("buttonForm").disabled = true;
-
-function checkValidity(){
+function checkValidity() {
   let emptyRegex = /^$/;
-  let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  if ((!emptyRegex.test(document.getElementById("inputName").value)) &&
-     (!emptyRegex.test(document.getElementById("inputPrenom").value)) &&
-     (!emptyRegex.test(document.getElementById("inputAddress").value)) &&
-     (!emptyRegex.test(document.getElementById("inputCity").value)) &&
-     (emailRegex.test(document.getElementById("inputEmail").value))
-     ) {
-    document.getElementById("buttonForm").disabled = false;
+  let emailRegex =
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; /* creation de deux regex l'une pour verifier que le champ n'est pas vide et l'autre pour verifier l'adresse mail */
+  if (
+    !emptyRegex.test(document.getElementById("inputName").value) &&
+    !emptyRegex.test(document.getElementById("inputPrenom").value) &&
+    !emptyRegex.test(document.getElementById("inputAddress").value) &&
+    !emptyRegex.test(
+      document.getElementById("inputCity").value
+    ) /* si le champ est different d'un champ vide alors... */ &&
+    emailRegex.test(
+      document.getElementById("inputEmail").value
+    ) /* si le champ réussit au test du regex alors...*/
+  ) {
+    document.getElementById(
+      "buttonForm"
+    ).disabled = false; /* après test des differentes valeurs, si la condition est respectée le bouton est activé */
     document.getElementById("message").innerHTML = "";
-  }
-  else {
+  } else {
     document.getElementById("buttonForm").disabled = true;
-    document.getElementById("message").innerHTML = "Merci de remplir tous les champs";
+    document.getElementById("message").innerHTML =
+      "Merci de remplir tous les champs";
   }
 }
 
+document.querySelectorAll("input").forEach((item) => {
+  addEventListener("input", function (e) {
+    checkValidity();
+  });
+}); /* on fait une boucle sur les inputs de la page et on appelle la fonction au click */
 
-document.getElementById("inputName").addEventListener("input", function(e){checkValidity()});
+/*
+document.getElementById("inputName").addEventListener("input", function(e){checkValidity()});    
 document.getElementById("inputPrenom").addEventListener("input", function(e){checkValidity()}); 
 document.getElementById("inputAddress").addEventListener("input", function(e){checkValidity()}); 
 document.getElementById("inputCity").addEventListener("input", function(e){checkValidity()});
 document.getElementById("inputEmail").addEventListener("input", function(e){checkValidity()});
-
-
-
-
-
-
-/*document.querySelectorAll("input").forEach(item => {addEventListener("input", function(e){checkValidity()});})*/
-/*document.querySelectorAll("input").forEach(item => {addEventListener("input", function(e){checkMail()});})*/
-
-/*function checkMail(){
-  let emptyRegex = /^$/;
-  let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  if 
-
-     ((emailRegex.test(document.getElementById("inputEmail").value))
-     ) {
-    document.getElementById("buttonForm").disabled = false;
-  }
-  else {
-    document.getElementById("buttonForm").disabled = true;
-  }
-}*/
-
-/*
-tabElement = [document.getElementById("inputName"), document.getElementById("inputPrenom"), 
-              document.getElementById("inputAddress"), document.getElementById("inputCity"), 
-              document.getElementById("inputEmail")];
 */
-
-

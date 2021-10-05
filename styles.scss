@@ -1,113 +1,96 @@
-$backgroundColor: #F2E8F0;
+$backgroundColor: #f2e8f0;
 
-$titleColor:#AF6BA5;
+$titleColor: #af6ba5;
 
 $textColor: #000;
 
-$fontText: 'Roboto';
+$fontText: "Roboto";
 
-#products{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-
-.fa-trash-alt{
+body {
+  font-family: $fontText, sans-serif !important;
+  background-color: $backgroundColor !important;
+  list-style-type: none;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: brown;
+  }
+  .fa-trash-alt {
     padding-left: 10px;
-}
-
-#productName{
-    display: inline;
-    font-weight: bold;
-}
-
-#productDesc{
-    margin-top: 10px;
-}
-
-.productElements{
-    margin-top: 20px;
-}
-
-#finalPrice{
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-.fa-trash-alt{
     color: purple;
-}
-
-body{
-    font-family: 'Roboto', sans-serif !important;
-    background-color: $backgroundColor !important;
-    list-style-type: none;
-    a{
-        color: inherit;
-        text-decoration: none;
-    }
-    a:hover{
-        color: brown;
-    }
-}
-
-header{
-    i{
-        font-size: 30px;
-        margin-right: 10px;
-        color: $titleColor;
-        position: relative;
-        bottom: 4px;
-    }
-}
-
-footer{
-    i{
-        font-size: 15px;
-        color: $titleColor;
-        margin-right: 5px;
-    }
-}
-
-
-.title{
-    font-family: 'Rubik', cursive;
+  }
+  .productElements {
+    margin-top: 20px;
+  }
+  .title {
     color: $titleColor;
-}
-
-.brand{
-    font-family: 'Roboto', cursive;
-    font-style: italic;
-    color: $titleColor;
-}
-
-.headerColor, .footerColor{
-    color: $textColor !important;
-}
-
-header, footer{
-    background-color: #FFF;
-}
-
-.inline{
+  }
+  .inline {
     display: inline;
+  }
 }
 
-#numberItemCard{
+header {
+  background-color: #fff;
+  .headerColor {
+    color: $textColor !important;
+  }
+  i {
+    font-size: 30px;
     margin-right: 10px;
+    color: $titleColor;
+    position: relative;
+    bottom: 4px;
+  }
+  .brand {
+    font-family: $fontText, cursive;
+    color: $titleColor;
+  }
 }
 
-
-
-@media (min-width: 768px){
-.mr-md-auto, .mx-md-auto {
-    margin-right: auto!important;
+footer {
+  background-color: #fff;
+  .footerColor {
+    color: $textColor !important;
+  }
+  i {
+    font-size: 15px;
+    color: $titleColor;
+    margin-right: 5px;
+  }
 }
-.sign {
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#productName {
+  display: inline;
+  font-weight: bold;
+}
+
+#productDesc {
+  margin-top: 10px;
+}
+
+#finalPrice {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#numberItemCard {
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .mr-md-auto,
+  .mx-md-auto {
+    margin-right: auto !important;
+  }
+  .sign {
     margin-left: 25px;
-}
-}
-@media (min-width:425px){
-}
-@media (min-width:320px){
+  }
 }

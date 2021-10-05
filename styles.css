@@ -1,40 +1,6 @@
-#products {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.fa-trash-alt {
-  padding-left: 10px;
-}
-
-#productName {
-  display: inline;
-  font-weight: bold;
-}
-
-#productDesc {
-  margin-top: 10px;
-}
-
-.productElements {
-  margin-top: 20px;
-}
-
-#finalPrice {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.fa-trash-alt {
-  color: purple;
-}
-
 body {
-  font-family: 'Roboto', sans-serif !important;
-  background-color: #F2E8F0 !important;
+  font-family: "Roboto", sans-serif !important;
+  background-color: #f2e8f0 !important;
   list-style-type: none;
 }
 
@@ -47,41 +13,78 @@ body a:hover {
   color: brown;
 }
 
+body .fa-trash-alt {
+  padding-left: 10px;
+  color: purple;
+}
+
+body .productElements {
+  margin-top: 20px;
+}
+
+body .title {
+  color: #af6ba5;
+}
+
+body .inline {
+  display: inline;
+}
+
+header {
+  background-color: #fff;
+}
+
+header .headerColor {
+  color: #000 !important;
+}
+
 header i {
   font-size: 30px;
   margin-right: 10px;
-  color: #AF6BA5;
+  color: #af6ba5;
   position: relative;
   bottom: 4px;
 }
 
-footer i {
-  font-size: 15px;
-  color: #AF6BA5;
-  margin-right: 5px;
+header .brand {
+  font-family: "Roboto", cursive;
+  color: #af6ba5;
 }
 
-.title {
-  font-family: 'Rubik', cursive;
-  color: #AF6BA5;
+footer {
+  background-color: #fff;
 }
 
-.brand {
-  font-family: 'Roboto', cursive;
-  font-style: italic;
-  color: #AF6BA5;
-}
-
-.headerColor, .footerColor {
+footer .footerColor {
   color: #000 !important;
 }
 
-header, footer {
-  background-color: #FFF;
+footer i {
+  font-size: 15px;
+  color: #af6ba5;
+  margin-right: 5px;
 }
 
-.inline {
+#products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#productName {
   display: inline;
+  font-weight: bold;
+}
+
+#productDesc {
+  margin-top: 10px;
+}
+
+#finalPrice {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 #numberItemCard {
@@ -89,7 +92,8 @@ header, footer {
 }
 
 @media (min-width: 768px) {
-  .mr-md-auto, .mx-md-auto {
+  .mr-md-auto,
+  .mx-md-auto {
     margin-right: auto !important;
   }
   .sign {
