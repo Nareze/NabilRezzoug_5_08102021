@@ -60,17 +60,17 @@ function showTeddies() {
 
         let footerLink_1 = document.getElementById("product1");
         footerLink_1.innerHTML = teddies[2].name;
-        footerLink_1.setAttribute("href", "produit.html?" + teddies[2]._id);
+        footerLink_1.setAttribute("href", `produit.html?id=${teddies[2]._id}`);
         let footerLink_2 = document.getElementById("product2");
         footerLink_2.innerHTML = teddies[4].name;
-        footerLink_2.setAttribute("href", "produit.html?" + teddies[4]._id);
+        footerLink_2.setAttribute("href", `produit.html?id=${teddies[4]._id}`);
         let footerLink_3 = document.getElementById("product3");
         footerLink_3.innerHTML = teddies[3].name;
-        footerLink_3.setAttribute("href", "produit.html?" + teddies[3]._id);
+        footerLink_3.setAttribute("href", `produit.html?id=${teddies[3]._id}`);
       } /*Inscription des liens (meilleurs ventes) dans le footer */
     })
-    .catch(function (teddies) {
-      console.log("Il y a eu un problème avec l'opération fetch");
+    .catch((error) => {
+      console.log(error);
     }); /* Ajoute un message si erreur */
 }
 showTeddies();

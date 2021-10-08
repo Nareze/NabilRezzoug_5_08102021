@@ -50,7 +50,7 @@ function showTeddies() {
       productDesc.innerText = teddies.description;
       let productId = document.getElementById("productId");
       productId.innerText =
-        teddies._id; /* on ajoute l'image le prix et description */
+        teddies._id; /* on ajoute l'image le prix et la description */
 
       for (let color of teddies.colors) {
         let customColor = document.createElement("option");
@@ -59,8 +59,8 @@ function showTeddies() {
         list.appendChild(customColor);
       }
     }) /* on utilise une boucle pour recuperer les couleurs et les afficher dans la balise select */
-    .catch(function (teddies) {
-      console.log("Il y a eu un problème avec l'opération fetch");
+    .catch((error) => {
+      console.log(error);
     });
 }
 showTeddies();
@@ -102,9 +102,9 @@ function addDataToCart() {
     /* initialise la variable item pour verifier si le localstorage contient des éléments */
     let items = JSON.parse(localStorage.getItem("data"));
 
-    /* si le nombre d'article du panier n'est pas vide alors... */
+    /* si le nombre d'article du panier est différent de 0 alors... */
     if (quantity.value !== "0") {
-      /* si le localstorage est vide alors ajouter le nouvel objet */
+      /* et si le localstorage est vide alors ajouter le nouvel objet */
       if (items === null) {
         items = [];
         items.push(objet);
@@ -128,7 +128,7 @@ function addDataToCart() {
 
         console.log("position : " + position);
         if (position != -1) {
-          /* dans ce if, quand le mapArray est different de -1, ("true" trouvé indexOf retourne sa position) alors on additionne les produits */
+          /* dans ce if quand le mapArray est different de -1 le "true" est trouvé, indexOf retourne sa position et on additionne les quantités */
 
           console.log(mapArray1);
           array1[position].quantity =

@@ -2,6 +2,12 @@
 
 let data = JSON.parse(localStorage.getItem("data"));
 
+console.log(data);
+
+if (data === null || data.length === 0) {
+  document.getElementById("emptyBasket").innerHTML = "Votre panier est vide !";
+}
+
 function getPrice() {
   priceOfElements = []; /* contient le prix de tous les produits */
 
@@ -79,7 +85,7 @@ function getPrice() {
     document.getElementById("products").appendChild(elem0);
     const reducer = (previousValue, currentValue) =>
       previousValue +
-      currentValue; /* aditionne les valeurs du tableau pour ajouter le prix final */
+      currentValue; /* additionne (accumule) les valeurs du tableau pour ajouter le prix final */
 
     let finalPrice = document.getElementById("finalPrice");
     finalPrice.innerHTML =
@@ -92,10 +98,9 @@ function getPrice() {
     console.log(priceOfElements.reduce(reducer));
   }
 }
-
 getPrice();
 
-function deleteItems(){
+function deleteItems() {
   localStorage.clear();
 }
 
@@ -135,6 +140,7 @@ function send(e) {
     console.log("id: " + id);
     products.push(id);
   } /* on ajoute tout les id des produits dans un array (à envoyer) */
+
   console.log("products[]: " + products);
 
   let bodyData = { contact, products };
@@ -143,6 +149,7 @@ function send(e) {
     body: JSON.stringify(bodyData),
     headers: { "Content-type": "application/json; charset=UTF-8" },
   }); /* dans le body on ajoute les elements a envoyer (contact,product) avec la méthode POST */
+
   fetch(request)
     .then(async function (res) {
       if (res.ok) {
@@ -188,15 +195,15 @@ function checkValidity() {
     ) /* si le champ est different d'un champ vide alors... */ &&
     emailRegex.test(
       document.getElementById("inputEmail").value
-    ) /* si le champ réussit au test du regex alors...*/
+    ) /* et si le champ réussit au test du regex alors...*/
   ) {
     document.getElementById(
       "buttonForm"
     ).disabled = false; /* après test des differentes valeurs, si la condition est respectée le bouton est activé */
-    document.getElementById("message").innerHTML = "";
+    document.getElementById("formMessage").innerHTML = "";
   } else {
     document.getElementById("buttonForm").disabled = true;
-    document.getElementById("message").innerHTML =
+    document.getElementById("formMessage").innerHTML =
       "Merci de remplir tous les champs";
   }
 }
@@ -206,11 +213,3 @@ document.querySelectorAll("input").forEach((item) => {
     checkValidity();
   });
 }); /* on fait une boucle sur les inputs de la page et on appelle la fonction au click */
-
-/*
-document.getElementById("inputName").addEventListener("input", function(e){checkValidity()});    
-document.getElementById("inputPrenom").addEventListener("input", function(e){checkValidity()}); 
-document.getElementById("inputAddress").addEventListener("input", function(e){checkValidity()}); 
-document.getElementById("inputCity").addEventListener("input", function(e){checkValidity()});
-document.getElementById("inputEmail").addEventListener("input", function(e){checkValidity()});
-*/
