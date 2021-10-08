@@ -109,7 +109,6 @@ function addDataToCart() {
         items = [];
         items.push(objet);
         localStorage.setItem("data", JSON.stringify(items));
-        // window.location.href = "panier.html";
 
         /* si le localstorage n'est pas vide rajouter un nouvel objet sans le dupliquer */
       } else {
@@ -141,7 +140,6 @@ function addDataToCart() {
           array1.push(objet);
         }
         localStorage.setItem("data", JSON.stringify(array1));
-        //window.location.href = "panier.html";
       }
     }
   });
